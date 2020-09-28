@@ -4,7 +4,7 @@ const employees = [
     id: 1,
     firstName: "Soleman",
     lastName: "Sayeed",
-    position: "full stack web Developer",
+    position: "Doctor",
     email: "Solemansay@gmail.com",
     phoneNumber: "619-629-9008"
 },
