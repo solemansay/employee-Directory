@@ -4,7 +4,7 @@ const TableData = ({ employees }) => {
   return (
     <tbody>
       {employees.map((employee) => (
-        <tr>
+        <tr key= {employee.id}>
           <td>{employee.id}</td>
           <td>{employee.firstName}</td>
           <td>{employee.lastName}</td>

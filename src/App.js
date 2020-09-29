@@ -4,50 +4,38 @@ import employees from "./employees";
 import Header from "./components/Header";
 import EmployeeTable from "./components/EmployeeTable";
 import Button from "react-bootstrap/Button";
-// import { InputGroup, FormControl, Container, Row, Col} from "react-bootstrap";
-import NameSearch from "./components/NameSearch";
 
 function App() {
-  const [employeesState, setEmployeesState, filteredEmployees] = useState({
+  const [employeesState, setEmployeesState] = useState({
     employees: [...employees],
   });
 
-  // useEffect(() => {
-  //   setEmployeesState({ employees: employees });
-  // });
+  const [search, setSearch] = useState("");
 
-  // const searchEmployees = (query) => {
-  //   const filteredEmployees = employeesState.employees.filter((employee) => {
-  //     return employee.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
-  //   });
-  //   return filteredEmployees;
-  // };
+  useEffect(() => {
+    setEmployeesState({ employees: employees });
+  }, []);
 
-  // };
-  
-  const FilterDoctors = () => {
-    
-    for (let i = 0; i < employees.length; i++)
-      if(employees[i].position === "Doctor"){
-
-    }  
-    
-
-    // filteredEmployees({
-    //   employees: employeesLeft,
-    // });
-  }
+  const searchEmployees = (query) => {
+    const filteredEmployees = employeesState.employees.filter((employee) => {
+      console.log(employee)
+      return (
+        employee.firstName.toLowerCase().indexOf(query.toLowerCase()) !== -1
+      );
+    });
+   return filteredEmployees
+  };
 
 
   const handleSortEmployees = () => {
-
     const sortEmployees = employeesState.employees.sort((a, b) =>
-      a.firstName > b.firstName ? 1 : -1,
+      a.firstName > b.firstName ? 1 : -1
     );
     setEmployeesState({
       employees: sortEmployees,
     });
   };
+
   return (
     <div>
       <Header />
@@ -59,17 +47,13 @@ function App() {
         Sort employees alphabetically{" "}
       </Button>
 
-      {/* <NameSearch/> */}
+      <input
+        className="nameSearch"
+        value={search}
+        onChange={(event) => setSearch(event.target.value)}
+      ></input>
 
-      <Button className="FilterBtn"
-        onClick={FilterDoctors}
-        variant="outline-success">
-          Filter out Doctors </Button>
-      
-
-      <EmployeeTable employees={employeesState.employees} 
-
-      />
+      <EmployeeTable employees={searchEmployees(search)} />
     </div>
   );
 }
