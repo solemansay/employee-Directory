@@ -28,10 +28,9 @@ function App() {
   const FilterDoctors = () => {
     
     for (let i = 0; i < employees.length; i++)
-    console.log(employees[i].position)
-    //   if(employees[i].position === "Doctor"){
+      if(employees[i].position === "Doctor"){
 
-    // }  
+    }  
     
 
     // filteredEmployees({
