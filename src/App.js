@@ -46,8 +46,9 @@ function App() {
       >
         Sort employees alphabetically{" "}
       </Button>
-
+      <br/>
       <input
+        placeholder="search employee by name"
         className="nameSearch"
         value={search}
         onChange={(event) => setSearch(event.target.value)}
